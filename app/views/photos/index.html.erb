@@ -1,0 +1,12 @@
+<h1>写真一覧</h1>
+
+<%= link_to "New photo", new_photo_path %>
+<br/><br/>
+<div id="photos">
+  <% @photos.each do |photo| %>
+    <div>
+      <%= link_to photo.title, photo %>
+      <%= image_tag photo.featured_image, size: "300x250" if photo.featured_image.attached? %>
+    </div>
+  <% end %>
+</div>

@@ -22,7 +22,11 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <nav>
+    <%= button_to "Log out", session_path, method: :delete if authenticated? %>
+  </nav>
+
+  <main>
     <%= yield %>
-  </body>
+  </main>
 </html>

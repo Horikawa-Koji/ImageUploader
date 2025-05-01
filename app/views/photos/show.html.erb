@@ -1,0 +1,5 @@
+<h1><%= @photo.title %></h1>
+<%= image_tag @photo.featured_image, size: "300x250" if @photo.featured_image.attached? %>
+<%= link_to "Back", photos_path %>
+
+<%= button_to "Delete", @photo, method: :delete, data: { turbo_confirm: "Are you sure?" } %>

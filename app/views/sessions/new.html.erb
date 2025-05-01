@@ -1,0 +1,16 @@
+<h1>ログイン</h1>
+
+<%= tag.div(flash[:alert].html_safe, style: "color:red") if flash[:alert] %>
+<%= tag.div(flash[:notice].html_safe, style: "color:green") if flash[:notice] %>
+
+<%= form_with url: session_path do |form| %>
+  <%# form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %>
+  <%# form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72 %>
+  ユーザーID<%= form.email_field :email_address, autofocus: true, autocomplete: "username", placeholder: "userID" %><br>
+  パスワード<%= form.password_field :password, autocomplete: "current-password", placeholder: "password" %><br>
+  <%= form.submit "ログインする" %>
+<% end %>
+<br>
+
+<%#パスワードを忘れた時の処理は要件に無いため、コメントアウトする %>
+<%#<%= link_to "Forgot password?", new_password_path %>
