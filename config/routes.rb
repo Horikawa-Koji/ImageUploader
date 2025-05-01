@@ -15,4 +15,8 @@ Rails.application.routes.draw do
   root "photos#index"
 
   resources :photos
+  post 'photos/:id/tweet', to: 'photos#tweet', as: :tweet_photo
+
+  get 'oauth/redirect', to: 'oauth#redirect'
+  get 'oauth/callback', to: 'oauth#callback'
 end
