@@ -14,5 +14,4 @@ class Photo < ApplicationRecord
     errors.add(:base, TITLE_TOO_LONG_MESSAGE) if title.present? && title.length > TITLE_MAX_LENGTH
     errors.add(:base, IMAGE_REQUIRED_MESSAGE) if featured_image.blank?
   end
-
 end
