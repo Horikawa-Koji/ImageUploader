@@ -6,7 +6,7 @@ class PhotosController < ApplicationController
   # 定義
   API_ENDPOINT = "http://unifa-recruit-my-tweet-app.ap-northeast-1.elasticbeanstalk.com/api/tweets".freeze
   CONTENT_TYPE = "application/json".freeze
-  SUCCESS_STATUS_CODE = Net::HTTPCreated
+  SUCCESS_STATUS_CODE = 201
   TWEET_SUCCESS_MESSAGE = "ツイートしました".freeze
   TWEET_FAILURE_MESSAGE = "ツイートに失敗しました".freeze
   TWEET_UNKNOWN_ERROR_MESSAGE = "不明なエラーが発生しました".freeze
