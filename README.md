@@ -1,24 +1,38 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+アプリケーションを起動して動作させるための必要な手順を記載します。
 
-Things you may want to cover:
+## Ruby のバージョン
+このプロジェクトでは Ruby `3.4.3` を使用しています。
 
-* Ruby version
+## Rails のバージョン
+このプロジェクトでは Rails `8.0.2` を使用しています。
 
-* System dependencies
+## ローカルでの実行方法
+- プロジェクトを clone する
+```sh
+$ git clone git@github.com:Horikawa-Koji/ImageUploader.git
+$ cd ImageUploader
+```
 
-* Configuration
+- データベースを設定する
+```sh
+$ rails db:create
+$ rails db:migrate
+```
 
-* Database creation
+- ユーザーを作成する
+```sh
+$ rails runner "User.create!(email_address: 'test@sample.jp', password: 'testabc', password_confirmation: 'testabc')"
+```
 
-* Database initialization
+- Rails サーバを起動する
+```sh
+$ bin/rails server
+```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- 以下のユーザーID、パスワードでログインする
+```
+ユーザーID:test@sample.jp
+パスワード:testabc
+```
