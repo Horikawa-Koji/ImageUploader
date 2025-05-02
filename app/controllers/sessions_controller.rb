@@ -1,12 +1,14 @@
 class SessionsController < ApplicationController
   allow_unauthenticated_access only: %i[ new create ]
-#  rate_limit to: 10, within: 3.minutes, only: :create, with: -> { redirect_to new_session_url, alert: "Try again later." }
 
   # 定数
+  # エラーメッセージ（フォームの入力チェック時に使用）
   EMAIL_ERROR_MESSAGE = "・ユーザーIDを入力してください。".freeze
   PASSWORD_ERROR_MESSAGE = "・パスワードを入力してください。".freeze
   LOGIN_ERROR_MESSAGE = "・ユーザーIDとパスワードが⼀致しません。".freeze
-  MESSAGE_SEPARATOR = "<br>".freeze
+
+  # エラーメッセージの区切り（HTML側で改行として利用）
+  MESSAGE_SEPARATOR = "\n".freeze
 
   def new
   end
@@ -29,21 +31,22 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session.delete(:access_token)  # セッションからアクセストークンを削除
+    session.delete(:access_token)  # アクセストークンを削除（ログアウト時の処理）
     terminate_session
     redirect_to new_session_path
   end
 
   private
-    # 入力チェック
+    # フォーム入力のバリデーション
+    # ユーザーIDとパスワードの入力チェックを行い、不足があればエラーメッセージを返す
     def check_input
-      [].tap do |err_message|
-        err_message << EMAIL_ERROR_MESSAGE if params[:email_address].blank?
-        err_message << PASSWORD_ERROR_MESSAGE if params[:password].blank?
-      end
+      errors = []
+      errors << EMAIL_ERROR_MESSAGE if params[:email_address].blank?
+      errors << PASSWORD_ERROR_MESSAGE if params[:password].blank?
+      errors
     end
 
-    # 表示用メッセージの作成
+    # 複数のエラーメッセージを連結し、表示用の形式に変換
     def make_display_message(message_list)
       message_list.join(MESSAGE_SEPARATOR)
     end

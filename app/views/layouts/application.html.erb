@@ -22,11 +22,13 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <nav>
-    <%= button_to "ログアウト", session_path, method: :delete if authenticated? %>
-  </nav>
+  <body class="background-style">
+    <nav class="nav-bar">
+      <%= link_to "ログアウト", session_path, data: { turbo_method: :delete } if authenticated? %>
+    </nav>
 
-  <main>
-    <%= yield %>
-  </main>
+    <main>
+      <%= yield %>
+    </main>
+  </body>
 </html>

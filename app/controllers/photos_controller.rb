@@ -6,7 +6,7 @@ class PhotosController < ApplicationController
   # 定義
   API_ENDPOINT = "http://unifa-recruit-my-tweet-app.ap-northeast-1.elasticbeanstalk.com/api/tweets".freeze
   CONTENT_TYPE = "application/json".freeze
-  SUCCESS_STATUS_CODE = 201
+  SUCCESS_STATUS_CODE = Net::HTTPCreated
   TWEET_SUCCESS_MESSAGE = "ツイートしました".freeze
   TWEET_FAILURE_MESSAGE = "ツイートに失敗しました".freeze
   TWEET_UNKNOWN_ERROR_MESSAGE = "不明なエラーが発生しました".freeze
@@ -43,12 +43,10 @@ class PhotosController < ApplicationController
     end
   end
 
-  # TODO テスト用、後で消す
   def show
     @photo = Photo.find(params[:id])
   end
 
-  # TODO テスト用、後で消す
   def destroy
     @photo = Photo.find(params[:id])
     @photo.destroy

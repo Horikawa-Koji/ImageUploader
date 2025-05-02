@@ -1,18 +1,19 @@
-<h1>写真一覧</h1>
+<h1 class="header-title">写真一覧</h1>
 
-<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
-<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
+<%= tag.div(flash[:alert], class: "flash-alert") if flash[:alert] %>
+<%= tag.div(flash[:notice], class: "flash-notice") if flash[:notice] %>
 
-<%= link_to "MyTweetAppと連携", oauth_redirect_path unless session[:access_token] %>
+<div class="actions">
+  <div><%= link_to "MyTweetAppと連携", oauth_redirect_path unless session[:access_token] %></div>
+  <div><%= link_to "写真を新規にアップロード", new_photo_path %></div>
+</div>
 
-<br/><br/>
-<%= link_to "写真を新規にアップロード", new_photo_path %>
-<br/><br/>
-<div id="photos">
+
+<div id="photos" class="photo-container">
   <% @photos.each do |photo| %>
-    <div>
-      <%= link_to photo.title, photo %>
-      <%= image_tag photo.featured_image, size: "300x250" if photo.featured_image.attached? %>
+    <div class="photo-item">
+      <%= photo.title %>
+      <%= image_tag photo.featured_image, class: "photo-img" if photo.featured_image.attached? %>
       <%= button_to "ツイートする", tweet_photo_path(photo), method: :post if session[:access_token] %>
     </div>
   <% end %>

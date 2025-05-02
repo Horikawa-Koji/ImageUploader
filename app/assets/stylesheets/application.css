@@ -8,3 +8,64 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+ .background-style {
+   background-color: #FFFFEE;
+ }
+
+ .nav-bar {
+   text-align: right;
+ }
+
+ .header-title {
+   background-color: #EEAA88;
+   padding: 10px;
+ }
+
+ .flash-alert {
+   color: red;
+ }
+
+ .flash-notice {
+   color: green;
+ }
+
+ .alert-danger ul {
+   color: red;
+   padding-left: 15px; /* 左に少し余白を追加 */
+ }
+
+ .login-form {
+   width: 300px;
+   margin: auto;
+ }
+
+ .form-group {
+   margin-bottom: 15px;
+ }
+
+ .photo-container {
+   display: flex;
+   gap: 20px;
+   flex-wrap: wrap; /* 折り返しは可能 */
+ }
+
+ .photo-item {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 10px;
+   padding: 15px;
+   border: 1px solid #ddd;
+   border-radius: 5px;
+   background-color: #f9f9f9;
+ }
+
+ .photo-item img {
+   width: 150px;
+   height: 150px;
+   object-fit: contain;
+ }
+
+ .actions {
+   margin-bottom: 20px;
+ }
